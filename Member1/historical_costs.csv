@@ -1,0 +1,136 @@
+date,provider,region,currency,daily_cost_usd
+2026-09-30,AWS,us-east-1,USD,125.2
+2026-09-30,Azure,Central India,USD,100.45
+2026-09-30,GCP,asia-south1,USD,89.95
+2026-10-01,AWS,us-east-1,USD,122.85
+2026-10-01,Azure,Central India,USD,98.1
+2026-10-01,GCP,asia-south1,USD,87.6
+2026-10-02,AWS,us-east-1,USD,120.5
+2026-10-02,Azure,Central India,USD,95.75
+2026-10-02,GCP,asia-south1,USD,85.25
+2026-10-03,AWS,us-east-1,USD,134.6
+2026-10-03,Azure,Central India,USD,109.85
+2026-10-03,GCP,asia-south1,USD,99.35
+2026-10-04,AWS,us-east-1,USD,132.25
+2026-10-04,Azure,Central India,USD,107.5
+2026-10-04,GCP,asia-south1,USD,97.0
+2026-10-05,AWS,us-east-1,USD,129.9
+2026-10-05,Azure,Central India,USD,105.15
+2026-10-05,GCP,asia-south1,USD,94.65
+2026-10-06,AWS,us-east-1,USD,127.55
+2026-10-06,Azure,Central India,USD,102.8
+2026-10-06,GCP,asia-south1,USD,92.3
+2026-10-07,AWS,us-east-1,USD,125.2
+2026-10-07,Azure,Central India,USD,100.45
+2026-10-07,GCP,asia-south1,USD,89.95
+2026-10-08,AWS,us-east-1,USD,122.85
+2026-10-08,Azure,Central India,USD,98.1
+2026-10-08,GCP,asia-south1,USD,87.6
+2026-10-09,AWS,us-east-1,USD,120.5
+2026-10-09,Azure,Central India,USD,95.75
+2026-10-09,GCP,asia-south1,USD,85.25
+2026-10-10,AWS,us-east-1,USD,134.6
+2026-10-10,Azure,Central India,USD,109.85
+2026-10-10,GCP,asia-south1,USD,99.35
+2026-10-11,AWS,us-east-1,USD,132.25
+2026-10-11,Azure,Central India,USD,107.5
+2026-10-11,GCP,asia-south1,USD,97.0
+2026-10-12,AWS,us-east-1,USD,129.9
+2026-10-12,Azure,Central India,USD,105.15
+2026-10-12,GCP,asia-south1,USD,94.65
+2026-10-13,AWS,us-east-1,USD,127.55
+2026-10-13,Azure,Central India,USD,102.8
+2026-10-13,GCP,asia-south1,USD,92.3
+2026-10-14,AWS,us-east-1,USD,125.2
+2026-10-14,Azure,Central India,USD,100.45
+2026-10-14,GCP,asia-south1,USD,89.95
+2026-10-15,AWS,us-east-1,USD,122.85
+2026-10-15,Azure,Central India,USD,98.1
+2026-10-15,GCP,asia-south1,USD,87.6
+2026-10-16,AWS,us-east-1,USD,120.5
+2026-10-16,Azure,Central India,USD,95.75
+2026-10-16,GCP,asia-south1,USD,85.25
+2026-10-17,AWS,us-east-1,USD,134.6
+2026-10-17,Azure,Central India,USD,109.85
+2026-10-17,GCP,asia-south1,USD,99.35
+2026-10-18,AWS,us-east-1,USD,132.25
+2026-10-18,Azure,Central India,USD,107.5
+2026-10-18,GCP,asia-south1,USD,97.0
+2026-10-19,AWS,us-east-1,USD,129.9
+2026-10-19,Azure,Central India,USD,105.15
+2026-10-19,GCP,asia-south1,USD,94.65
+2026-10-20,AWS,us-east-1,USD,127.55
+2026-10-20,Azure,Central India,USD,102.8
+2026-10-20,GCP,asia-south1,USD,92.3
+2026-10-21,AWS,us-east-1,USD,125.2
+2026-10-21,Azure,Central India,USD,100.45
+2026-10-21,GCP,asia-south1,USD,89.95
+2026-10-22,AWS,us-east-1,USD,122.85
+2026-10-22,Azure,Central India,USD,98.1
+2026-10-22,GCP,asia-south1,USD,87.6
+2026-10-23,AWS,us-east-1,USD,120.5
+2026-10-23,Azure,Central India,USD,95.75
+2026-10-23,GCP,asia-south1,USD,85.25
+2026-10-24,AWS,us-east-1,USD,134.6
+2026-10-24,Azure,Central India,USD,109.85
+2026-10-24,GCP,asia-south1,USD,99.35
+2026-10-25,AWS,us-east-1,USD,132.25
+2026-10-25,Azure,Central India,USD,107.5
+2026-10-25,GCP,asia-south1,USD,97.0
+2026-10-26,AWS,us-east-1,USD,129.9
+2026-10-26,Azure,Central India,USD,105.15
+2026-10-26,GCP,asia-south1,USD,94.65
+2026-10-27,AWS,us-east-1,USD,127.55
+2026-10-27,Azure,Central India,USD,102.8
+2026-10-27,GCP,asia-south1,USD,92.3
+2026-10-28,AWS,us-east-1,USD,125.2
+2026-10-28,Azure,Central India,USD,100.45
+2026-10-28,GCP,asia-south1,USD,89.95
+2026-10-29,AWS,us-east-1,USD,122.85
+2026-10-29,Azure,Central India,USD,98.1
+2026-10-29,GCP,asia-south1,USD,87.6
+2026-10-30,AWS,us-east-1,USD,120.5
+2026-10-30,Azure,Central India,USD,95.75
+2026-10-30,GCP,asia-south1,USD,85.25
+2026-10-31,AWS,us-east-1,USD,134.6
+2026-10-31,Azure,Central India,USD,109.85
+2026-10-31,GCP,asia-south1,USD,99.35
+2026-11-01,AWS,us-east-1,USD,132.25
+2026-11-01,Azure,Central India,USD,107.5
+2026-11-01,GCP,asia-south1,USD,97.0
+2026-11-02,AWS,us-east-1,USD,129.9
+2026-11-02,Azure,Central India,USD,105.15
+2026-11-02,GCP,asia-south1,USD,94.65
+2026-11-03,AWS,us-east-1,USD,127.55
+2026-11-03,Azure,Central India,USD,102.8
+2026-11-03,GCP,asia-south1,USD,92.3
+2026-11-04,AWS,us-east-1,USD,125.2
+2026-11-04,Azure,Central India,USD,100.45
+2026-11-04,GCP,asia-south1,USD,89.95
+2026-11-05,AWS,us-east-1,USD,122.85
+2026-11-05,Azure,Central India,USD,98.1
+2026-11-05,GCP,asia-south1,USD,87.6
+2026-11-06,AWS,us-east-1,USD,120.5
+2026-11-06,Azure,Central India,USD,95.75
+2026-11-06,GCP,asia-south1,USD,85.25
+2026-11-07,AWS,us-east-1,USD,134.6
+2026-11-07,Azure,Central India,USD,109.85
+2026-11-07,GCP,asia-south1,USD,99.35
+2026-11-08,AWS,us-east-1,USD,132.25
+2026-11-08,Azure,Central India,USD,107.5
+2026-11-08,GCP,asia-south1,USD,97.0
+2026-11-09,AWS,us-east-1,USD,129.9
+2026-11-09,Azure,Central India,USD,105.15
+2026-11-09,GCP,asia-south1,USD,94.65
+2026-11-10,AWS,us-east-1,USD,127.55
+2026-11-10,Azure,Central India,USD,102.8
+2026-11-10,GCP,asia-south1,USD,92.3
+2026-11-11,AWS,us-east-1,USD,125.2
+2026-11-11,Azure,Central India,USD,100.45
+2026-11-11,GCP,asia-south1,USD,89.95
+2026-11-12,AWS,us-east-1,USD,122.85
+2026-11-12,Azure,Central India,USD,98.1
+2026-11-12,GCP,asia-south1,USD,87.6
+2026-11-13,AWS,us-east-1,USD,120.5
+2026-11-13,Azure,Central India,USD,95.75
+2026-11-13,GCP,asia-south1,USD,85.25

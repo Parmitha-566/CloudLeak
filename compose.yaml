@@ -1,0 +1,8 @@
+﻿services:
+  backend:
+    build: .
+    image: cloudleak-backend:1.0
+    container_name: cloudleak-backend-compose
+    ports:
+      - "8006:8000"
+    restart: unless-stopped

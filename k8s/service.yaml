@@ -1,0 +1,13 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: cloudleak-backend
+  namespace: cloudleak
+spec:
+  type: ClusterIP
+  selector:
+    app: cloudleak-backend
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000

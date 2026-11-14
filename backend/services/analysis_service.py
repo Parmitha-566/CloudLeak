@@ -1,104 +1,144 @@
 
-from datetime import date, timedelta
+from analyzer.recommendations import (
+    generate_recommendations as analyzer_generate_recommendations,
+)
+from analyzer.anomaly_detection import (
+    detect_anomalies as analyzer_detect_anomalies,
+)
+from analyzer.forecasting import forecast_costs
 
 from backend.services.data_service import (
-    get_resources,
-    get_total_cost,
-    get_mock_anomalies
+    get_analyzer_resource_dataframe,
+    get_historical_anomaly_dataframe,
+    get_historical_forecast_dataframe,
 )
 
 
 def generate_recommendations():
     """
-    Generate simulated cost optimization recommendations
-    based on resource utilization.
+    Generate recommendations using Member 2's actual analyzer.
+
+    Savings estimates are produced by the analyzer.
+    Priority is an application-level display label.
     """
+    resource_df = get_analyzer_resource_dataframe()
+
+    result = analyzer_generate_recommendations(resource_df)
 
     recommendations = []
 
-    for resource in get_resources():
+    for item in result["recommendations"]:
+        action = item["recommended_action"]
 
-        utilization = resource["utilization"]
-        resource_id = resource["resource_id"]
+        if action == "investigate_stopping":
+            recommendation_type = "Stop Resource Investigation"
+            priority = "high"
 
-        # Identify underutilized resources
-        if utilization < 40:
+        elif action == "consider_downsizing":
+            recommendation_type = "Rightsizing"
+            priority = "medium"
 
-            savings = round(resource["cost"] * 0.30, 2)
+        else:
+            recommendation_type = str(action)
+            priority = "low"
 
-            recommendations.append({
-                "resource_id": resource_id,
-                "recommendation_type": "Rightsizing",
-                "description": (
-                    "Resource utilization is low. "
-                    "Consider using a smaller resource configuration."
-                ),
-                "estimated_monthly_savings": savings,
-                "priority": "high"
-            })
-
-        # Identify heavily utilized resources
-        elif utilization > 85:
-
-            recommendations.append({
-                "resource_id": resource_id,
-                "recommendation_type": "Performance Optimization",
-                "description": (
-                    "Resource utilization is very high. "
-                    "Review capacity to avoid performance issues."
-                ),
-                "estimated_monthly_savings": 0.0,
-                "priority": "medium"
-            })
+        recommendations.append({
+            "resource_id": str(item["resource_id"]),
+            "recommendation_type": recommendation_type,
+            "description": str(item["reason"]),
+            "estimated_monthly_savings": round(
+                float(item["estimated_monthly_savings"]), 2
+            ),
+            "priority": priority,
+        })
 
     return recommendations
 
 
 def detect_anomalies():
     """
-    Return simulated cloud cost anomalies.
-    """
+    Detect unusual historical provider-level cost increases.
 
-    return get_mock_anomalies()
+    Historical data is provider-level, so resource_id in the
+    existing API response represents a provider identifier.
+    Severity is a presentation label derived from the
+    detected percentage increase, not a Member 2 model output.
+    """
+    historical_df = get_historical_anomaly_dataframe()
+
+    result = analyzer_detect_anomalies(historical_df)
+
+    anomalies = []
+
+    for item in result["anomalies"]:
+        increase = float(item["increase_percentage"])
+
+        if increase >= 100:
+            severity = "high"
+        elif increase >= 50:
+            severity = "medium"
+        else:
+            severity = "low"
+
+        anomaly_date = item["date"]
+
+        if hasattr(anomaly_date, "date"):
+            anomaly_date = anomaly_date.date()
+
+        if hasattr(anomaly_date, "isoformat"):
+            anomaly_date = anomaly_date.isoformat()
+        else:
+            anomaly_date = str(anomaly_date)
+
+        anomalies.append({
+            "resource_id": str(item["resource_id"]),
+            "date": anomaly_date,
+            "observed_cost": round(float(item["actual_cost"]), 2),
+            "expected_cost": round(float(item["baseline_cost"]), 2),
+            "deviation_percentage": round(increase, 2),
+            "severity": severity,
+        })
+
+    return anomalies
 
 
 def generate_forecast(days=7):
     """
-    Generate a simple seven-day simulated cost forecast.
+    Generate a seven-day expenditure forecast using Member 2.
 
-    This is a baseline projection, not a trained
-    machine learning forecasting model.
+    The integrated forecasting function currently supports
+    a fixed seven-day forecast.
     """
+    if days != 7:
+        raise ValueError(
+            "The integrated forecasting module supports exactly 7 days."
+        )
 
-    if days < 1:
-        raise ValueError("Forecast days must be at least 1.")
+    historical_df = get_historical_forecast_dataframe()
 
-    total_cost = get_total_cost()
-
-    # Use the simulated monthly cost to estimate daily expenditure
-    daily_cost = total_cost / 30
+    result = forecast_costs(historical_df)
 
     forecast = []
 
-    for day in range(1, days + 1):
+    for item in result["forecasts"]:
+        forecast_date = item["date"]
 
-        forecast_date = date.today() + timedelta(days=day)
+        if hasattr(forecast_date, "date"):
+            forecast_date = forecast_date.date()
 
-        # Apply a small deterministic daily variation
-        trend_factor = 1 + (0.01 * day)
-
-        predicted_cost = round(
-            daily_cost * trend_factor, 2
-        )
-
-        lower_bound = round(predicted_cost * 0.90, 2)
-        upper_bound = round(predicted_cost * 1.10, 2)
+        if hasattr(forecast_date, "isoformat"):
+            forecast_date = forecast_date.isoformat()
+        else:
+            forecast_date = str(forecast_date)
 
         forecast.append({
-            "date": forecast_date.isoformat(),
-            "predicted_cost": predicted_cost,
-            "lower_bound": lower_bound,
-            "upper_bound": upper_bound
+            "date": forecast_date,
+            "predicted_cost": round(
+                float(item["forecasted_cost"]), 2
+            ),
+            # Member 2 provides point forecasts, not confidence intervals.
+            "lower_bound": None,
+            "upper_bound": None,
         })
 
     return forecast

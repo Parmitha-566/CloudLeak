@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend
+    container_name: cloudleak-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    container_name: cloudleak-frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - CLOUDLEAK_API_URL=http://backend:8000
+      - CLOUDLEAK_DATA_MODE=auto
+    depends_on:
+      - backend
+    volumes:
+      - .:/app
+    restart: unless-stopped

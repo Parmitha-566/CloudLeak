@@ -1,8 +1,23 @@
-﻿services:
+services:
   backend:
     build: .
     image: cloudleak-backend:1.0
     container_name: cloudleak-backend-compose
     ports:
       - "8006:8000"
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    image: cloudleak-dashboard:1.0
+    container_name: cloudleak-dashboard
+    ports:
+      - "8502:8501"
+    environment:
+      CLOUDLEAK_API_URL: "http://backend:8000"
+      CLOUDLEAK_DATA_MODE: "api"
+    depends_on:
+      - backend
     restart: unless-stopped

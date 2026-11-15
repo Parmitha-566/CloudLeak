@@ -1,0 +1,48 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudleak-dashboard
+  namespace: cloudleak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudleak-dashboard
+  template:
+    metadata:
+      labels:
+        app: cloudleak-dashboard
+    spec:
+      containers:
+        - name: cloudleak-dashboard
+          image: cloudleak-dashboard:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8501
+              name: http
+          env:
+            - name: CLOUDLEAK_API_URL
+              value: "http://cloudleak-backend:8000"
+            - name: CLOUDLEAK_DATA_MODE
+              value: "api"
+            - name: PYTHONUNBUFFERED
+              value: "1"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          readinessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 30
+            periodSeconds: 20
